@@ -1,6 +1,7 @@
 import csv
 import json
 from pprint import pprint
+import yaml
 
 
 data_list = [
@@ -23,6 +24,13 @@ data_dict = [
     {"header1": "data1", "header2": "data2", "header3": "data3", "header4": "data4"},
     {"header1": "data1", "header2": "data2", "header3": "data3", "header4": "data4"}
 ]
+
+data_yaml = {
+    'attr1': 'value1',
+    'attr2': 'value2',
+    'attr3': 'value3',
+    'attr4': ['value1', 'value2', 'value3']
+}
 
 columns = ["header1", "header2", "header3", "header4"]
 
@@ -70,4 +78,12 @@ def json_write(need_data):
         json.dump(need_data, file, indent = 4)
 
 
+def yaml_read():
+    with open("notebook/data/read.yml") as file:
+        pprint(yaml.safe_load(file))
+
+
+def yaml_write(need_data):
+    with open("notebook/data/write.yml", "w") as file:
+        yaml.safe_dump(need_data, file)
 
