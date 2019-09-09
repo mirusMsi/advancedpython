@@ -1,4 +1,6 @@
 import csv
+import json
+from pprint import pprint
 
 
 data_list = [
@@ -26,7 +28,7 @@ columns = ["header1", "header2", "header3", "header4"]
 
 
 def csv_read():
-    type_reader = input("Введите формат записи данных: ")
+    type_reader = input("Введите формат чтения данных: ")
     with open("notebook/data/read.csv") as file:
 
         if type_reader == "base":
@@ -56,6 +58,16 @@ def csv_write(need_data, headers):
 
         for row in need_data:
             writer.writerow(row)
+
+
+def json_read():
+    with open("notebook/data/read.json") as file:
+        pprint(json.load(file))
+
+
+def json_write(need_data):
+    with open("notebook/data/write.json", "w") as file:
+        json.dump(need_data, file, indent = 4)
 
 
 
