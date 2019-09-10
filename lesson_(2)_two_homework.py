@@ -85,9 +85,9 @@ def json_write(need_data):
 
 
 def yaml_read():
-    yaml_read_answer = []
+    yaml_read_answer = {}
     with open("notebook/data/read.yml") as file:
-        ppyaml_read_answer = yaml.safe_load(file)
+        yaml_read_answer = yaml.safe_load(file)
 
     return yaml_read_answer
 
@@ -96,8 +96,3 @@ def yaml_write(need_data):
     with open("notebook/data/write.yml", "w") as file:
         yaml.safe_dump(need_data, file)
 
-
-my_object = yaml_read()
-
-for row in my_object:
-    pprint(row)
