@@ -96,3 +96,5 @@ def yaml_write(need_data):
     with open("notebook/data/write.yml", "w") as file:
         yaml.safe_dump(need_data, file)
 
+
+pprint(json_read())
