@@ -37,6 +37,7 @@ columns = ["header1", "header2", "header3", "header4"]
 
 def csv_read():
     type_reader = input("Введите формат чтения данных: ")
+    csv_read_answer = []
     with open("notebook/data/read.csv") as file:
 
         if type_reader == "base":
@@ -48,7 +49,9 @@ def csv_read():
             return
 
         for row in reader:
-            print(row)
+            csv_read_answer.append(row)
+
+        return csv_read_answer
 
 
 def csv_write(need_data, headers):
@@ -69,8 +72,11 @@ def csv_write(need_data, headers):
 
 
 def json_read():
+    json_read_answer = []
     with open("notebook/data/read.json") as file:
-        pprint(json.load(file))
+        json_read_answer = json.load(file)
+
+    return json_read_answer
 
 
 def json_write(need_data):
@@ -79,11 +85,19 @@ def json_write(need_data):
 
 
 def yaml_read():
+    yaml_read_answer = []
     with open("notebook/data/read.yml") as file:
-        pprint(yaml.safe_load(file))
+        ppyaml_read_answer = yaml.safe_load(file)
+
+    return yaml_read_answer
 
 
 def yaml_write(need_data):
     with open("notebook/data/write.yml", "w") as file:
         yaml.safe_dump(need_data, file)
 
+
+my_object = yaml_read()
+
+for row in my_object:
+    pprint(row)
