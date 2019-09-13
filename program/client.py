@@ -46,7 +46,7 @@ if __name__ == '__main__':
     action = input('Enter action name: ')
     message = input('Enter your message: ')
 
-    request = make_request(message)
+    request = make_request(action, message)
     string_request = json.dumps(request)
 
     sock.send(string_request.encode())
