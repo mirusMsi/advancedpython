@@ -2,12 +2,15 @@ import sys
 import yaml
 import socket
 import json
+from datetime import datetime
 from argparse import ArgumentParser
 
 
-def make_request(text):
+def make_request(action, text, date=datetime.now()):
     return {
-        'data': text
+        'action': action,
+        'data': text,
+        'time': date.timestamp()
     }
 
 
@@ -40,8 +43,10 @@ if __name__ == '__main__':
     sock = socket.socket()
     sock.connect((host, port))
 
-    message = input('Enter your message')
-    request = make_request(message)
+    action = input('Enter action name: ')
+    message = input('Enter your message: ')
+
+    request = make_request(action, message)
     string_request = json.dumps(request)
 
     sock.send(string_request.encode())
